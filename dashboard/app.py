@@ -13,7 +13,9 @@ import os
 # ── Paths ─────────────────────────────────────────────────────────
 BASE_DIR   = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR   = os.path.join(BASE_DIR, 'data')
-MODEL_PATH = os.path.join(BASE_DIR, '..', 'src', 'model.pkl')
+MODEL_PATH = os.path.join(BASE_DIR, 'model.pkl') \
+    if os.path.exists(os.path.join(BASE_DIR, 'model.pkl')) \
+    else os.path.join(BASE_DIR, '..', 'src', 'model.pkl')
 
 # ── Load pre-computed data ────────────────────────────────────────
 with open(os.path.join(DATA_DIR, 'kpis.json')) as f:
@@ -469,4 +471,4 @@ def update_future_forecast(n_clicks, store_id, weeks_ahead):
 
 # ── Run ───────────────────────────────────────────────────────────
 if __name__ == '__main__':
-    app.run(debug=True, port=8050)
+    app.run(debug=False, host='0.0.0.0', port=7860)
