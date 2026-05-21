@@ -374,7 +374,7 @@ def update_future_forecast(n_clicks, store_id, weeks_ahead):
     try:
         historical = df_features[
             df_features['Store'] == store_id
-        ].tail(60)[['Date','Sales']].copy()
+        ].tail(30)[['Date','Sales']].copy()
 
         future_dates, future_preds = forecast_future(store_id, weeks_ahead)
 

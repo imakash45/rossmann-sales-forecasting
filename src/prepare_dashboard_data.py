@@ -101,7 +101,7 @@ print(f"   ✅ test_predictions.csv saved — {len(test_data)} rows")
 
 # ── 7. Features lite (last 60 days per store for forecasting) ─────
 print("📊 Saving features lite...")
-features_lite = df_features.groupby('Store').tail(60).copy()
+features_lite = df_features.groupby('Store').tail(30).copy()
 features_lite['Date'] = features_lite['Date'].astype(str)
 features_lite.to_csv(os.path.join(DASH_DIR, 'features_lite.csv'), index=False)
 print(f"   ✅ features_lite.csv saved — {len(features_lite)} rows")
